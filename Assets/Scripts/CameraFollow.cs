@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour {
 	private float yDistance = 4f;
 
 	void Awake() {
-		spherePos = GameObject.Find("Sphere").transform;
+		spherePos = GameObject.Find("boxman").transform;
 	}
 
 	// Use this for initialization
