@@ -224,6 +224,7 @@
     <Compile Include="Assets\Scripts\HUD.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\InventoryItem.cs" />
+    <Compile Include="Assets\Scripts\InventoryItemBase.cs" />
     <Compile Include="Assets\Scripts\ItemDragHandler.cs" />
     <Compile Include="Assets\Scripts\ItemDropHandler.cs" />
     <Compile Include="Assets\Scripts\M4.cs" />
