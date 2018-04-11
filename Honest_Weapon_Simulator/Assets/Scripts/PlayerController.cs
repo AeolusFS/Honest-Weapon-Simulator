@@ -16,14 +16,29 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 _moveDir = Vector3.zero;
 
-    public Inventory inventory;
+    public Inventory Inventory;
 
     // Use this for initialization
     void Start()
     {
         _animator = GetComponent<Animator>();
         _characterController = GetComponent<CharacterController>();
+        Inventory.ItemRemoved += Inventory_ItemRemoved;
     }
+
+    #region Inventory
+
+    private void Inventory_ItemRemoved(object sender, InventoryEventArgs e)
+    {
+        InventoryItemBase item = e.Item;
+
+        GameObject goItem = (item as MonoBehaviour).gameObject;
+        goItem.SetActive(true);
+        goItem.transform.parent = null;
+
+    }
+
+    #endregion
 
     // Update is called once per frame
     void Update()
@@ -60,12 +75,23 @@ public class PlayerController : MonoBehaviour
 
         _characterController.Move(_moveDir * Time.deltaTime);
     }
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private InteractableItemBase mInteractItem = null;
+
+    private void OnTriggerEnter(Collider other)
     {
-        IInventoryItem item = hit.collider.GetComponent<IInventoryItem>();
+        InteractableItemBase item = other.GetComponent<InteractableItemBase>();
         if (item != null)
         {
-            inventory.AddItem(item);
+            mInteractItem = item;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        InteractableItemBase item = other.GetComponent<InteractableItemBase>();
+        if (item != null)
+        {
+            mInteractItem = null;
         }
     }
 }

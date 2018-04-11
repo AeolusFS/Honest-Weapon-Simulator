@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ItemDragHandler : MonoBehaviour, IDragHandler,IEndDragHandler {
-    public IInventoryItem Item { get; set; }
+    public InventoryItemBase Item { get; set; }
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
@@ -14,14 +14,4 @@ public class ItemDragHandler : MonoBehaviour, IDragHandler,IEndDragHandler {
     {
         transform.localPosition = Vector3.zero;
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
