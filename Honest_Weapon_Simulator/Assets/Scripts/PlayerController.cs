@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
     private Animator _animator;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _moveDir = Vector3.zero;
 
     public Inventory inventory;
+    public GunController theGun;
 
     // Use this for initialization
     void Start()
@@ -28,6 +30,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+            theGun.isFiring = true;
+        if (Input.GetMouseButtonUp(0))
+            theGun.isFiring = false;
         // Get Input for axis
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
