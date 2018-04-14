@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/demo_test.unity
+- path: Assets/Scenes/shield_sword.unity
   isLoaded: 1
   isActive: 1
